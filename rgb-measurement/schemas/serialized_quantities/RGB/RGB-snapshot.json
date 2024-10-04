@@ -1,0 +1,49 @@
+{
+  "quantity": "RGB",
+  "method": "RGB-snapshot",
+  "json_schema_specifications": {
+    "properties": {
+      "R": {
+        "description": "Red",
+        "title": "R",
+        "type": "number"
+      },
+      "G": {
+        "description": "Green",
+        "title": "G",
+        "type": "number"
+      },
+      "B": {
+        "description": "Blue",
+        "title": "B",
+        "type": "number"
+      }
+    },
+    "required": ["R", "G", "B"],
+    "title": "RGBInput",
+    "type": "object"
+  },
+  "json_schema_result_output": {
+    "properties": {
+      "R": {
+        "description": "Red",
+        "title": "R",
+        "type": "number"
+      },
+      "G": {
+        "description": "Green",
+        "title": "G",
+        "type": "number"
+      },
+      "B": {
+        "description": "Blue",
+        "title": "B",
+        "type": "number"
+      }
+    },
+    "required": ["R", "G", "B"],
+    "title": "RGBOutput",
+    "type": "object"
+  },
+  "is_active": true
+}

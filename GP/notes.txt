@@ -1,0 +1,54 @@
+Yes, it is possible to choose which screen to go fullscreen on using [`pygame`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fpizzi%2FDropbox%2FGiovanni%2Ffinales-rgb%2Fshow_color.py%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A1%2C%22character%22%3A7%7D%7D%5D%2C%22b118ea62-f388-4b7d-8a87-c9d6ff54a699%22%5D "Go to definition"). You can do this by setting the display mode to the desired screen. [`pygame`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fpizzi%2FDropbox%2FGiovanni%2Ffinales-rgb%2Fshow_color.py%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A1%2C%22character%22%3A7%7D%7D%5D%2C%22b118ea62-f388-4b7d-8a87-c9d6ff54a699%22%5D "Go to definition") allows you to specify the display index when setting the display mode.
+
+Here's how you can modify your code to choose which screen to go fullscreen on:
+
+### Modified Code
+```python
+#!/usr/bin/env python
+import pygame
+import time
+
+def show_fullscreen_color(rgb_color, duration, display_index=0):
+    # Initialize pygame
+    pygame.init()
+    
+    # Set up the display on the specified screen
+    display_info = pygame.display.Info()
+    screen = pygame.display.set_mode((display_info.current_w, display_info.current_h), pygame.FULLSCREEN, display=display_index)
+    
+    # Hide the mouse cursor
+    pygame.mouse.set_visible(False)
+
+    print("Showing color ({}, {}, {}) on display {} for {} seconds...".format(*rgb_color, display_index, duration))
+
+    # Fill the screen with the specified color
+    screen.fill(rgb_color)
+    
+    # Update the display
+    pygame.display.flip()
+    
+    # Wait for the specified duration
+    time.sleep(duration)
+    
+    # Quit pygame
+    pygame.quit()
+
+# Example usage
+rgb_color = (255, 0, 0)  # Red color
+duration = 5  # Display for 5 seconds
+display_index = 1  # Choose the second display (index 1)
+show_fullscreen_color(rgb_color, duration, display_index)
+```
+
+### Explanation
+- [`pygame.display.set_mode((display_info.current_w, display_info.current_h), pygame.FULLSCREEN, display=display_index)`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fpizzi%2FDropbox%2FGiovanni%2Ffinales-rgb%2Fshow_color.py%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A1%2C%22character%22%3A7%7D%7D%5D%2C%22b118ea62-f388-4b7d-8a87-c9d6ff54a699%22%5D "Go to definition"): This line sets the display mode to fullscreen on the specified display index.
+- `display_index`: This parameter allows you to choose which screen to go fullscreen on. The default value is [`0`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fpizzi%2FDropbox%2FGiovanni%2Ffinales-rgb%2Fshow_color.py%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A9%2C%22character%22%3A38%7D%7D%5D%2C%22b118ea62-f388-4b7d-8a87-c9d6ff54a699%22%5D "Go to definition"), which corresponds to the primary display. You can change this to `1` for the second display, `2` for the third display, and so on.
+
+### Notes
+- Ensure that you have multiple displays connected and configured correctly.
+- The [`pygame.display.Info()`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fpizzi%2FDropbox%2FGiovanni%2Ffinales-rgb%2Fshow_color.py%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A1%2C%22character%22%3A7%7D%7D%5D%2C%22b118ea62-f388-4b7d-8a87-c9d6ff54a699%22%5D "Go to definition") function provides information about the current display, such as its width and height. This is used to set the display mode to the correct resolution.
+- The [`display`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fpizzi%2FDropbox%2FGiovanni%2Ffinales-rgb%2Fshow_color.py%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A9%2C%22character%22%3A20%7D%7D%5D%2C%22b118ea62-f388-4b7d-8a87-c9d6ff54a699%22%5D "Go to definition") parameter in [`pygame.display.set_mode`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fpizzi%2FDropbox%2FGiovanni%2Ffinales-rgb%2Fshow_color.py%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A1%2C%22character%22%3A7%7D%7D%5D%2C%22b118ea62-f388-4b7d-8a87-c9d6ff54a699%22%5D "Go to definition") is used to specify the display index. This feature is available in [`pygame`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fpizzi%2FDropbox%2FGiovanni%2Ffinales-rgb%2Fshow_color.py%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A1%2C%22character%22%3A7%7D%7D%5D%2C%22b118ea62-f388-4b7d-8a87-c9d6ff54a699%22%5D "Go to definition") version 2.0.0 and later. If you are using an older version, you may need to update [`pygame`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fhome%2Fpizzi%2FDropbox%2FGiovanni%2Ffinales-rgb%2Fshow_color.py%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A1%2C%22character%22%3A7%7D%7D%5D%2C%22b118ea62-f388-4b7d-8a87-c9d6ff54a699%22%5D "Go to definition"):
+  ```sh
+  pip install --upgrade pygame
+  ```
+  
