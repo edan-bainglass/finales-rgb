@@ -37,10 +37,12 @@ def generate_quantity(
 
 
 if __name__ == "__main__":
-    quantity_path = BASEPATH_QUANTITIES / "RGB" / "RGB-snapshot.json"
+    quantity = "RGB-prediction"
+    method = "RGB-optimization"
+    quantity_path = BASEPATH_QUANTITIES / quantity / f"{method}.json"
     generate_quantity(
-        "RGB",
-        "RGB-snapshot",
+        quantity,
+        method,
         RGBInput,
         RGBOutput,
         quantity_path,

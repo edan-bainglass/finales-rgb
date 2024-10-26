@@ -1,6 +1,6 @@
 {
-  "quantity": "RGB",
-  "method": "RGB-snapshot",
+  "quantity": "RGB-prediction",
+  "method": "RGB-optimization",
   "json_schema_specifications": {
     "properties": {
       "R": {
@@ -17,9 +17,19 @@
         "description": "Blue",
         "title": "B",
         "type": "number"
+      },
+      "n_calls": {
+        "default": 1,
+        "description": "Number of optimization calls",
+        "title": "N Calls",
+        "type": "integer"
       }
     },
-    "required": ["R", "G", "B"],
+    "required": [
+      "R",
+      "G",
+      "B"
+    ],
     "title": "RGBInput",
     "type": "object"
   },
@@ -39,9 +49,19 @@
         "description": "Blue",
         "title": "B",
         "type": "number"
+      },
+      "cost": {
+        "description": "Cost",
+        "title": "Cost",
+        "type": "number"
       }
     },
-    "required": ["R", "G", "B"],
+    "required": [
+      "R",
+      "G",
+      "B",
+      "cost"
+    ],
     "title": "RGBOutput",
     "type": "object"
   },
