@@ -15,6 +15,10 @@ logger = logging.getLogger("RGBOptimizationTenant")
 class RGBOptimizationTenant(Tenant):
     """A Tenant to manage RGB optimization."""
 
+    def run(self):
+        # TODO override to accommodate repeated requests for measurements
+        pass
+
 
 def run_optimization(input_request: RequestInfo):
     request_ID = input_request["uuid"]  # type: ignore
@@ -59,12 +63,12 @@ def prepare_result(request: dict, data):
         (
             "Preparing results for:",
             f"  request: {request['uuid']}",
-            f"  measurement: {data['measurement_id']}",
+            f"  optimization: {data['id']}",
         )
     )
 
     request_technical = Request(**request["request"])
-    method = "rgb-measurement"
+    method = "rgb-optimization"
 
     result = {
         "data": {
